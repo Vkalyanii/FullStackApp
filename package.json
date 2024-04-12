@@ -22,8 +22,27 @@
   },
   "cds": {
     "requires": {
-      "db": "hana",
-      "auth": "xsuaa"
+      "db": "sqlite",
+      "auth": {
+        "kind": "mocked",
+        "users": {
+          "admin@sap.com": {
+            "password": "Initial",
+            "ID": "admin@sap.com",
+            "roles": [
+              "Admin"
+            ]
+          },
+          "user@sap.com": {
+            "password": "Initial",
+            "ID": "user@sap.com",
+            "roles": [
+              "User"
+            ]
+          }        
+  
+        }
+      }
     }
   }
 }

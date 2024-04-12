@@ -23,3 +23,15 @@ File or Folder | Purpose
 ## Learn More
 
 Learn more at https://cap.cloud.sap/docs/get-started/.
+
+
+      "auth": {
+        "kind": "mocked",
+        "admin@sap.com": {
+          "password": "Initial",
+          "ID": "admin@sap.com",
+          "roles": [
+            "Admin"
+          ]
+        }
+      }
