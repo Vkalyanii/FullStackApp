@@ -5,10 +5,6 @@ service EmployeeService {
     @restrict: [{
         grant: '*',
         to   : 'Admin'
-    },
-    {
-        grant: 'READ',
-        to: 'User'
     }]
     entity Employee    as projection on db.Employee;
 

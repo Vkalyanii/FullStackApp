@@ -25,13 +25,25 @@ File or Folder | Purpose
 Learn more at https://cap.cloud.sap/docs/get-started/.
 
 
+```json
       "auth": {
         "kind": "mocked",
-        "admin@sap.com": {
-          "password": "Initial",
-          "ID": "admin@sap.com",
-          "roles": [
-            "Admin"
-          ]
+        "users": {
+          "admin@sap.com": {
+            "password": "Initial",
+            "ID": "admin@sap.com",
+            "roles": [
+              "Admin"
+            ]
+          },
+          "user@sap.com": {
+            "password": "Initial",
+            "ID": "user@sap.com",
+            "roles": [
+              "User"
+            ]
+          }        
+  
         }
       }
+```
