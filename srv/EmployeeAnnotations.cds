@@ -9,3 +9,9 @@ annotate EmployeeService.Employee with {
     gender @title: '{i18n>Gender}';
     phone  @title: '{i18n>phone}';
 };
+
+
+// annotate EmployeeService.Employee with @restrict: [{
+//         grant: '*',
+//         to   : 'Admin'
+//     }];
