@@ -56,6 +56,30 @@ modules:
         existing_destinations_policy: ignore
   build-parameters:
     no-source: true
+- name: EMPLOYEE-SAP-CAP-MANAGED-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: EMPLOYEE-SAP-CAP-MANAGED_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - comappemployeedetails.zip
+      name: comappemployeedetails
+      target-path: resources/
+- name: comappemployeedetails
+  type: html5
+  path: app/employeedetails
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
 resources:
 - name: EMPLOYEE-SAP-CAP-MANAGED-db
   type: com.sap.xs.hdi-container
@@ -67,10 +91,28 @@ resources:
   parameters:
     config:
       HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: EMPLOYEE-SAP-CAP-MANAGED-srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          existing_destinations_policy: update
       version: 1.0.0
     service: destination
     service-name: EMPLOYEE-SAP-CAP-MANAGED-destination-service
     service-plan: lite
+  requires:
+  - name: srv-api
 - name: EMPLOYEE-SAP-CAP-MANAGED_html_repo_host
   type: org.cloudfoundry.managed-service
   parameters:
@@ -85,6 +127,7 @@ resources:
     service-name: EMPLOYEE-SAP-CAP-MANAGED-xsuaa-service
     service-plan: application
 parameters:
+  deploy_mode: html5-repo
   enable-parallel-deployments: true
 build-parameters:
   before-all:
