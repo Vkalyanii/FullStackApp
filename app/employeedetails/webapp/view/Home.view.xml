@@ -1,4 +1,5 @@
 <mvc:View
+    xmlns:layout="sap.ui.layout"
     xmlns:f="sap.f"
     controllerName="com.app.employeedetails.controller.Home"
     xmlns:mvc="sap.ui.core.mvc"
@@ -55,12 +56,78 @@
                 id="idDynamicPageHeader"
                 pinnable="true"
             >
-                <Text text="TODO Filters will be placed Here" />
+                <HBox id="idFilterHLayout" alignContent="SpaceAround" width="100vw">
+                    <VBox id="idEmailFilter" class="sapUiSmallMarginEnd">
+                        <Label
+                            id="idEmailFilterLabel"
+                            text="Email:"
+                        />
+                        <Input
+                            id="idEmailFilterValue"
+                            value=""
+                        />
+                    </VBox>
+                    <VBox id="idFNameFilter" class="sapUiSmallMarginEnd">
+                        <Label
+                            id="idFNameFilterLabel"
+                            text="First Name:"
+                        />
+                        <Input
+                            id="idFNameFilterValue"
+                            value=""
+                        />
+                    </VBox>
+                    <VBox id="idLNameFilter" class="sapUiSmallMarginEnd">
+                        <Label
+                            id="idLNameFilterLabel"
+                            text="Last Name:"
+                        />
+                        <Input
+                            id="idLNameFilterValue"
+                            value=""
+                        />
+                    </VBox>
+                    <VBox id="iPhoneFilter" class="sapUiSmallMarginEnd">
+                        <Label
+                            id="iPhoneFilterLabel"
+                            text="Phone:"
+                        />
+                        <Input
+                            id="iPhoneFilterValue"
+                            value=""
+                        />
+                    </VBox>   
+                    <VBox id="idGoButton" class="sapUiSmallMarginEnd">
+                        <Label
+                            id="idGoButtonLabel"
+                            text=""
+                        />
+                        <Button
+                            id="idGoButtonValue"
+                            text="Go"
+                            type="Emphasized"
+                            press="onGoPress"
+                        />
+                    </VBox>   
+                    <VBox id="idClearFilterButton" class="sapUiSmallMarginEnd">
+                        <Label
+                            id="idClearFilterButtonLabel"
+                            text=""
+                        />
+                        <Button
+                            id="idClearFilterButtonValue"
+                            text="Clear Filter"
+                            type="Emphasized"
+                            press="onClearFilterPress"
+                        />
+                    </VBox>   
+
+                </HBox>
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
             <Table
-                id="EmployeeTable"
+                id="idEmployeeTable"
                 mode="SingleSelectMaster"
                 alternateRowColors="true"
                 items="{/Employee}"
@@ -83,7 +150,7 @@
                             icon="sap-icon://delete"
                             tooltip="Delete Employee"
                             type="Negative"
-                        />                        
+                        />
                     </OverflowToolbar>
                 </headerToolbar>
                 <columns>
