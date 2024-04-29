@@ -128,12 +128,19 @@
         "controlId": "app",
         "clearControlAggregation": false
       },
-      "routes": [
+      "routes":[
         {
           "name": "RouteHome",
           "pattern": ":?query:",
           "target": [
             "TargetHome"
+          ]
+        },
+        {
+          "name":  "routeDetails",
+          "pattern": "EmployeeDetails/{empId}/:empName:",
+          "target": [
+            "TargetDetails"
           ]
         }
       ],
@@ -144,6 +151,12 @@
           "clearControlAggregation": false,
           "viewId": "Home",
           "viewName": "Home"
+        },
+        "TargetDetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Details",
+          "viewName": "Details"
         }
       }
     },
