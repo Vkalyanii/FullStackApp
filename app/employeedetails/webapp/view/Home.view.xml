@@ -62,21 +62,12 @@
                             id="idEmailFilterLabel"
                             text="Email:"
                         />
-                        <Input
+                        <MultiInput
                             id="idEmailFilterValue"
-                            value=""
+                            showValueHelp="true"
+                            showTableSuggestionValueHelp="true"
                         />
-                        	<!-- <Label id="_IDGenLabel1" text="Enter a search term, e.g. “Notebook”, and add matching products as tokens" width="100%" labelFor="multiInput"/>
-                        <MultiInput width="70%"
-			showClearIcon="true"
-			id="multiInput"
-			suggestionItems="{
-				path: '/EmployeeSRV',
-				sorter: { path: 'fName' }
-			}"
-			showValueHelp="false">
-			<core:Item id="_IDGenItem1" key="{fName}" text="{fName}" />
-		</MultiInput> -->
+                        	 
                     </VBox>
                     <VBox id="idFNameFilter" class="sapUiSmallMarginEnd">
                         <Label
@@ -84,13 +75,7 @@
                             text="{i18n>text}:"
                         />
 
-                        	<!-- <MultiInput id="multiInput1" width="50%" showSuggestion="false" showValueHelp="false"/> -->
-                        <!-- <Input
-                            id="idFNameFilterValue"
-                            value=""
-                        /> -->
-
-                         <MultiInput id="multiInput1" width="100%" showClearIcon="true"  showTableSuggestionValueHelp="true"  showValueHelp="false"/> 
+                         <MultiInput id="multiInput1" width="100%" showClearIcon="true"  showTableSuggestionValueHelp="true"  showValueHelp="true"/> 
 
                     </VBox>
                     <VBox id="idLNameFilter" class="sapUiSmallMarginEnd">
@@ -100,7 +85,7 @@
                         />
                         <MultiInput
                             id="idLNameFilterValue"
-                            showClearIcon="true"  showTableSuggestionValueHelp="true"  showValueHelp="false"
+                            showClearIcon="true"  showTableSuggestionValueHelp="true"  showValueHelp="true"
                         />
                     </VBox>
                     <VBox id="iPhoneFilter" class="sapUiSmallMarginEnd">
@@ -108,9 +93,10 @@
                             id="iPhoneFilterLabel"
                             text="Phone:"
                         />
-                        <Input
+                        <MultiInput
                             id="iPhoneFilterValue"
-                            value=""
+                            showTableSuggestionValueHelp="true"  showValueHelp="true"
+                            
                         />
                     </VBox>   
                     <VBox id="idGoButton" class="sapUiSmallMarginEnd">
@@ -147,6 +133,7 @@
                 mode="SingleSelectMaster"
                 alternateRowColors="true"
                 items="{/Employee}"
+                selectionChange="onSelectEmployee"
             >
                 <headerToolbar>
                     <OverflowToolbar id="idEmployeeTableHeader">
@@ -159,14 +146,15 @@
                             id="idBtnCreate"
                             icon="sap-icon://add"
                             tooltip="Create Employee"
+                            press="onCreateBtnPress"
                             type="Success"
                         />
-                        <Button
+                        <!-- <Button
                             id="idBtnDelete"
                             icon="sap-icon://delete"
                             tooltip="Delete Employee"
                             type="Negative"
-                        />
+                        /> -->
                     </OverflowToolbar>
                 </headerToolbar>
                 <columns>
@@ -202,7 +190,7 @@
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem id="idEmployeeTableColListItem">
+                    <ColumnListItem id="idEmployeeTableColListItem" type="Navigation">
                         <cells>
                             <Text
                                 id="idNameColValue"
